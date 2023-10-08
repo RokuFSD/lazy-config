@@ -12,6 +12,13 @@ return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
 
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  },
+
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
@@ -19,7 +26,18 @@ return {
       colorscheme = "gruvbox",
     },
   },
-
+  {
+    "folke/noice.nvim",
+    opts = function(_, opts)
+      table.insert(opts.routes, {
+        filter = {
+          event = "notify",
+          find = "No information available",
+        },
+        opts = { skip = true },
+      })
+    end,
+  },
   -- change trouble config
   {
     "folke/trouble.nvim",
@@ -45,7 +63,7 @@ return {
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
-      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
+      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" }, { name = "crates" } }))
     end,
   },
 
@@ -109,6 +127,7 @@ return {
           vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
         end)
       end,
+      "simrat39/rust-tools.nvim",
     },
     ---@class PluginLspOpts
     opts = {
@@ -116,6 +135,7 @@ return {
       servers = {
         -- tsserver will be automatically installed with mason and loaded with lspconfig
         tsserver = {},
+        rust_analyzer = {},
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -128,6 +148,10 @@ return {
         end,
         -- Specify * to use this function as a fallback for any server
         -- ["*"] = function(server, opts) end,
+        rust_analyzer = function(_, opts)
+          require("rust-tools").setup({ server = opts })
+          return true
+        end,
       },
     },
   },
