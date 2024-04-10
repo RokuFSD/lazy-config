@@ -134,7 +134,7 @@ return {
       ---@type lspconfig.options
       servers = {
         -- tsserver will be automatically installed with mason and loaded with lspconfig
-        tsserver = {},
+        -- tsserver = {},
         rust_analyzer = {},
       },
       -- you can do any additional lsp server setup here
@@ -142,10 +142,10 @@ return {
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
       setup = {
         -- example to setup with typescript.nvim
-        tsserver = function(_, opts)
-          require("typescript").setup({ server = opts })
-          return true
-        end,
+        -- tsserver = function(_, opts)
+        --   require("typescript").setup({ server = opts })
+        --   return true
+        -- end,
         -- Specify * to use this function as a fallback for any server
         -- ["*"] = function(server, opts) end,
         rust_analyzer = function(_, opts)
@@ -158,7 +158,7 @@ return {
 
   -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
   -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
-  { import = "lazyvim.plugins.extras.lang.typescript" },
+  -- { import = "lazyvim.plugins.extras.lang.typescript" },
 
   -- add more treesitter parsers
   {
@@ -176,7 +176,7 @@ return {
         "query",
         "regex",
         "tsx",
-        "typescript",
+        -- "typescript",
         "vim",
         "yaml",
       },
@@ -190,10 +190,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       -- add tsx and treesitter
-      vim.list_extend(opts.ensure_installed, {
-        "tsx",
-        "typescript",
-      })
+      vim.list_extend(opts.ensure_installed, {})
     end,
   },
 

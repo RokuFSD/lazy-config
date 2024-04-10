@@ -1,57 +1,23 @@
--- return {
---   {
---     "catppuccin/nvim",
---     name = "catppuccin",
---     lazy = false,
---     opts = { flavour = "mocha" },
---   },
---   {
---     "LazyVim/LazyVim",
---     opts = {
---       colorscheme = "catppuccin",
---     },
---   },
--- }
-
 return {
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = false,
-  --   opts = { style = "moon", styles = { sidebars = "normal" } },
-  -- },
-  -- {
-  --   "aktersnurra/no-clown-fiesta.nvim",
-  --   lazy = false,
-  -- },
   {
-    "felipeagc/fleet-theme-nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false,
-  },
-  {
-    "LazyVim/LazyVim",
     opts = {
-      colorscheme = "fleet",
+      transparent_background = true,
+      flavour = "frappe",
+    },
+    integrations = {
+      cmp = true,
+      gitsigns = true,
+      nvimtree = true,
+      treesitter = true,
+      notify = true,
+      mini = {
+        enabled = true,
+        indentscope_color = "",
+      },
+      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
   },
 }
-
--- return {
---   {
---     "EdenEast/nightfox.nvim",
---     lazy = false,
---     opts = {
---       options = {
---         styles = {
---           comments = "italic",
---           keywords = "bold",
---         },
---       },
---     },
---   }, -- lazy
---   {
---     "LazyVim/LazyVim",
---     opts = {
---       colorscheme = "nordfox",
---     },
---   },
--- }
