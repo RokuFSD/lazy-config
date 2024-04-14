@@ -4,7 +4,7 @@ return {
     name = "catppuccin",
     lazy = false,
     opts = {
-      transparent_background = true,
+      transparent_background = false,
       flavour = "frappe",
     },
     integrations = {
@@ -18,6 +18,12 @@ return {
         indentscope_color = "",
       },
       -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+    },
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin-frappe",
     },
   },
 }
