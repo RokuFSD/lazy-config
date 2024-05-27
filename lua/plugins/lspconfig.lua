@@ -2,24 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
-      tsserver = {
-        init_options = {
-          plugins = {
-            {
-              name = "@vue/typescript-plugin",
-              location = "",
-              languages = { "javascript", "typescript", "vue" },
-            },
-          },
-        },
-        filetypes = {
-          "javascript",
-          "typescript",
-          "vue",
-          "typescriptreact",
-          "javascriptreact",
-        },
-      },
+      eslint = {},
     },
     setup = {
       eslint = function()
