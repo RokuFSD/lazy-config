@@ -1,14 +1,14 @@
 {
   "extras": [
     "lazyvim.plugins.extras.coding.codeium",
-    "lazyvim.plugins.extras.editor.trouble-v3",
+    "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.lang.go",
     "lazyvim.plugins.extras.lang.vue",
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.util.mini-hipatterns"
   ],
   "news": {
-    "NEWS.md": "4964"
+    "NEWS.md": "5204"
   },
-  "version": 5
+  "version": 6
 }

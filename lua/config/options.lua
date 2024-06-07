@@ -21,6 +21,6 @@ vim.o.shellpipe = '2>&1 | %{ "$_" } | Tee-Object %s; exit $LastExitCode'
 vim.o.shellquote = ""
 vim.o.shellxquote = ""
 
-vim.g.neovide_transparency = 0.95
+-- vim.g.neovide_transparency = 0.95
 
 vim.o.guifont = "CaskaydiaCove Nerd Font Mono:h12"
