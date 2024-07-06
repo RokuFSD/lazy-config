@@ -7,6 +7,8 @@ else
   vim.o.shell = "powershell"
 end
 
+vim.g.lazyvim_php_lsp = "intelephense"
+
 -- Setting shell command flags
 vim.o.shellcmdflag =
   "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
