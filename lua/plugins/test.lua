@@ -27,7 +27,7 @@ return {
   {
     "folke/which-key.nvim",
     optional = true,
-    opts = {
+    spec = {
       defaults = {
         ["<leader>t"] = { name = "+test" },
       },
