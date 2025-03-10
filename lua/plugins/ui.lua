@@ -1,62 +1,4 @@
 return {
-  -- -- messages, cmdline and the popupmenu
-  -- {
-  --   "folke/noice.nvim",
-  --   opts = function(_, opts)
-  --     table.insert(opts.routes, {
-  --       filter = {
-  --         event = "notify",
-  --         find = "No information available",
-  --       },
-  --       opts = { skip = true },
-  --     })
-  --     local focused = true
-  --     vim.api.nvim_create_autocmd("FocusGained", {
-  --       callback = function()
-  --         focused = true
-  --       end,
-  --     })
-  --     vim.api.nvim_create_autocmd("FocusLost", {
-  --       callback = function()
-  --         focused = false
-  --       end,
-  --     })
-  --     table.insert(opts.routes, 1, {
-  --       filter = {
-  --         cond = function()
-  --           return not focused
-  --         end,
-  --       },
-  --       view = "notify_send",
-  --       opts = { stop = false },
-  --     })
-  --
-  --     opts.commands = {
-  --       all = {
-  --         -- options for the message history that you get with `:Noice`
-  --         view = "split",
-  --         opts = { enter = true, format = "details" },
-  --         filter = {},
-  --       },
-  --     }
-  --
-  --     vim.api.nvim_create_autocmd("FileType", {
-  --       pattern = "markdown",
-  --       callback = function(event)
-  --         vim.schedule(function()
-  --           require("noice.text.markdown").keys(event.buf)
-  --         end)
-  --       end,
-  --     })
-  --
-  --     opts.lsp.hover = {
-  --       enabled = true,
-  --       silent = true,
-  --       view = nil,
-  --     }
-  --     opts.presets.lsp_doc_border = true
-  --   end,
-  -- },
   {
     "amrbashir/nvim-docs-view",
     lazy = true,
@@ -75,61 +17,21 @@ return {
   },
 
   -- buffer line
-  {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    keys = {
-      { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-      { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
-    },
-    opts = {
-      options = {
-        mode = "tabs",
-        -- separator_style = "slant",
-        show_buffer_close_icons = false,
-        show_close_icon = false,
-      },
-    },
-  },
-
-  -- statusline
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = {
-      options = {
-        -- globalstatus = false,
-        theme = "lackluster",
-      },
-    },
-  },
-
-  -- filename
   -- {
-  --   "b0o/incline.nvim",
-  --   event = "BufReadPre",
-  --   priority = 1200,
-  --   config = function()
-  --     local colors = require("kanagawa.colors").setup({ theme = "wave" })
-  --     require("incline").setup({
-  --       highlight = {
-  --         groups = {
-  --           InclineNormal = { guibg = colors.palette.sumiInk0, guifg = colors.palette.dragonRed },
-  --           InclineNormalNC = { guifg = colors.palette.sumiInk0, guibg = colors.palette.dragonRed },
-  --         },
-  --       },
-  --       window = { margin = { vertical = 0, horizontal = 1 } },
-  --       render = function(props)
-  --         local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-  --         if vim.bo[props.buf].modified then
-  --           filename = "[+] " .. filename
-  --         end
-  --
-  --         local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-  --         return { { icon, guifg = color }, { " " }, { filename } }
-  --       end,
-  --     })
-  --   end,
+  --   "akinsho/bufferline.nvim",
+  --   event = "VeryLazy",
+  --   keys = {
+  --     { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
+  --     { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
+  --   },
+  --   opts = {
+  --     options = {
+  --       mode = "tabs",
+  --       -- separator_style = "slant",
+  --       show_buffer_close_icons = false,
+  --       show_close_icon = false,
+  --     },
+  --   },
   -- },
   {
     "folke/zen-mode.nvim",
@@ -142,5 +44,68 @@ return {
       },
     },
     keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
+  },
+  {
+    "folke/snacks.nvim",
+    ---@type snacks.Config
+    opts = {
+      scroll = { enabled = false },
+      scratch = {
+        ft = "markdown",
+      },
+      picker = {
+        matcher = {
+          fuzzy = true,
+          smartcase = true,
+          ignorecase = true,
+          filename_bonus = true,
+        },
+      },
+      sources = {
+        explorer = {
+          matcher = {
+            fuzzy = true, -- Enables fuzzy matching, so you can be a bit imprecise with your search terms
+            smartcase = true, -- If your search term has uppercase letters, the search becomes case-sensitive
+            ignorecase = true, -- Ignores case when searching, unless smartcase is triggered
+            filename_bonus = true, -- Gives a higher priority to matches in filenames
+            sort_empty = false, -- If no matches are found, it won't sort the results
+          },
+        },
+      },
+    },
+  },
+  {
+    "saghen/blink.cmp",
+    lazy = true,
+    opts = {
+
+      completion = {
+        list = {
+          selection = {
+            preselect = false,
+            auto_insert = false,
+          },
+        },
+      },
+    },
+  },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy", -- Load this plugin on the 'VeryLazy' event
+    requires = { "nvim-tree/nvim-web-devicons", opt = true }, -- Optional dependency for icons
+    opts = {
+      options = {
+        icons_enabled = true, -- Enable icons in the statusline
+      },
+      sections = {
+        lualine_a = {
+          {
+            "mode", -- Display the current mode
+            icon = "󱗞", -- Set the icon for the mode
+          },
+        },
+      },
+    },
   },
 }
