@@ -78,7 +78,6 @@ return {
     "saghen/blink.cmp",
     lazy = true,
     opts = {
-
       completion = {
         list = {
           selection = {
@@ -97,6 +96,7 @@ return {
     opts = {
       options = {
         icons_enabled = true, -- Enable icons in the statusline
+        theme = "lackluster",
       },
       sections = {
         lualine_a = {
