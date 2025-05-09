@@ -3,9 +3,9 @@ return {
   opts = {
     inlay_hints = { enabled = false },
     setup = {
-      biome = function()
+      eslint = function()
         require("lazyvim.util").lsp.on_attach(function(client)
-          if client.name == "biome" then
+          if client.name == "eslint" then
             client.server_capabilities.documentFormattingProvider = true
           elseif client.name == "vtsls" then
             client.server_capabilities.documentFormattingProvider = false
